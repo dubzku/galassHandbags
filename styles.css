@@ -10,6 +10,20 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 img { max-width: 100%; height: auto; display: block;} body, h1, h2, h3, h4, h5, h6, p, ol, ul { margin: 0; padding: 0; font-weight: normal;} ol, ul {list-style: none;} a {text-decoration: none;}
 
+/* ---------------SKIP LINK--------------- */
+.skip-link {
+    position: absolute;
+    left: -1000px;
+    top: 5px;
+    z-index: 999;
+    background: white;
+    color: black;
+}
+
+.skip-link:focus {
+    left: 0;
+}
+
 /* ---------------GENERAL STYLES--------------- */
 html {
     font-size: 62.5%;
@@ -21,7 +35,8 @@ html {
     margin: 0 auto;
 }
 
-body {
+body,
+input[type="email"] {
     font-family: 'Roboto', sans-serif;
     font-size: 2rem;
 }
@@ -29,7 +44,8 @@ body {
 body,
 button,
 p,
-a {
+a,
+input[type="email"] {
     font-weight: 300;
     color: #FFFFFF;
 }
@@ -43,6 +59,10 @@ h3 {
 
 h1 {
     font-size: 9rem;
+}
+
+h1,
+.contactInfo {
     text-align: right;
 }
 
@@ -65,14 +85,29 @@ footer nav {
     line-height: 29px;
 }
 
+.mainNav li a:hover,
+.mainNav li a:focus,
+.contactUs a:hover,
+.contactUs a:focus {
+    text-decoration: underline;
+}
+
 button {
     font-size: 2.5rem;
-    text-align: center;
     background-color: #1D0303;
     border: 1px solid #1D0303;
     padding: 8px 15px;
     margin-top: 30px;
     display: block;
+}
+
+.latestCollection h2,
+.otherPages li,
+.subscribeForm,
+input[type="email"],
+button,
+.copyright {
+    text-align: center;
 }
 
 button:hover,
@@ -126,11 +161,6 @@ header .wrapper {
     padding: 0 30px;
 }
 
-.mainNav li a:hover,
-.mainNav li a:focus {
-    text-decoration: underline;
-}
-
 .hamburger {
     position: absolute;
     top: 0;
@@ -172,10 +202,6 @@ header .wrapper {
     padding: 40px 0 100px 0;
 }
 
-.latestCollection h2 {
-    text-align: center;
-}
-
 .latestCollection li {
     float: left;
     width: calc((100% / 3) - 30px);
@@ -192,7 +218,6 @@ header .wrapper {
     float: left;
     width: calc((100% / 3) - 60px);
     margin: 0 30px;
-    text-align: center;
 }
 
 /* ---------------BLOG SECTION STYLES--------------- */
@@ -225,12 +250,10 @@ header .wrapper {
     padding: 40px 0 40px 50px;
 }
 
-
-
 /* ---------------FOOTER STYLES--------------- */
 .contactUs {
     background-color: #500801;
-    padding: 50px 0;
+    padding-top: 50px;
 }
 
 .contactUsNav,
@@ -239,25 +262,39 @@ header .wrapper {
     float: left;
 }
 
-.contactUsNav {
-    width: 20%;
-}
-
+.contactUsNav,
 .contactInfo {
-    width: 30%;
+    width: 26%;
 }
 
 .subscribeForm {
-    width: 50%;
-    text-align: center;
+    width: 48%;
 }
 
 input[type="email"] {
-    width: 60%;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 55%;
+    color: #000000;
+    border: 1px solid #000000;
 }
 
-.contactInfo {
-    text-align: right;
+.subscribeForm p {
+    padding-top: 15px;
+}
+
+.contactUs button {
+    display: inline-block;
+}
+
+.copyright {
+    padding: 10px;
+    background-color: #1D0303;
+    margin-top: 50px;
+}
+
+.copyright a {
+    color: #ce9930;
 }
 
 /* ---------------MEDIA QUERIES--------------- */
@@ -282,7 +319,7 @@ input[type="email"] {
         padding-top: 30px;
     }
     .about p {
-        padding-bottom: 20px;
+        margin-bottom: 30px;
     }
     button {
         margin: 0 auto;
@@ -320,8 +357,8 @@ input[type="email"] {
     .blogSectionImageContainer,
     .blogSectionTextContainerTwo,
     .blogSectionImageContainerTwo {
-    width: 100%;
-    float: none;
+        width: 100%;
+        float: none;
     }
     .blogSection img {
         width: 100%;
@@ -332,10 +369,45 @@ input[type="email"] {
     .blogSectionTextContainerTwo {
         padding-left: 0px;
     }
+    .blogSection p {
+        margin-bottom: 30px;
+    }
+    .otherPages {
+        padding: 30px 0;
+    }
     .otherPages li {
         float: none;
         width: 100%;
-        margin: 30px 0;
+        margin: 40px 0;
+    }
+    .contactUsNav {
+        padding: 10px 0 20px 0;
+        margin: 0 auto;
+    }
+    .contactUsNav li {
+        float: left;
+        margin: 0 8px;
+    }
+    .contactUsNav,
+    .subscribeForm,
+    .contactInfo {
+        float: none;
+        width: 100%;
+    }
+    .subscribeForm p {
+        padding-bottom: 15px;
+    }
+    .subscribeForm input[type="email"] {
+        width: 60%;
+    }
+    .contactInfo {
+        padding-top: 20px;
+        text-align: center;
+    }
+    .contactUs p {
+        font-size: 1.6rem;
+        line-height: 2rem;
+        padding-top: 5px;
     }
 }
 
@@ -345,6 +417,9 @@ input[type="email"] {
     }
     h2 {
         font-size: 3.5rem;
+    }
+    h3 {
+        font-size: 3rem;
     }
     .headerOneDiv {
         float: none;
@@ -366,25 +441,14 @@ input[type="email"] {
         width: calc((100% / 2) - 10px);
         margin: 0 5px;
     }
+    .latestCollection {
+        padding-bottom: 60px;
+    }
     .otherPages i {
         font-size: 6rem;
     }
-    .contactUsNav {
-        padding: 10px 0 20px 0;
-    }
-    .contactUsNav li {
-        float: left;
-        margin: 0 8px;
-    }
-    .contactUsNav,
-    .subscribeForm,
-    .contactInfo {
-        float: none;
+    .subscribeForm input[type="email"] {
         width: 100%;
-    }
-    .contactInfo {
-        padding-top: 20px;
-        text-align: center;
     }
 }
 
@@ -406,6 +470,9 @@ input[type="email"] {
 @media (max-width: 400px) {
     .headerImage {
         width: 100%;
+    }
+    .contactUs p {
+        font-size: 1.4rem;
     }
 }
 
